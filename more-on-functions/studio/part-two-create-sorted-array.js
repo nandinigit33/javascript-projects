@@ -40,12 +40,29 @@ function sortFuncArr(arr) {
   return sortArr;
 }
 
-console.log(sortFuncArr(nums1));
+//console.log(sortFuncArr(nums1));
 console.log(sortFuncArr(nums2));
 console.log(sortFuncArr(nums3));
 
 /* BONUS MISSION: Refactor your sorting function to use recursion below:
  */
+function sortFuncRecursive(arr, sortArr = []) {
+  //base case
+  if (arr.length == 0) {
+    console.log("Array is sorted");
+    return sortArr;
+  }
+  //otherwise make changes to both arr and sortArr and call recursive function
+  let min = findMinValue(arr);
+  arr.splice(arr.indexOf(min), 1);
+  sortArr.push(min);
+  console.log(arr);
+  console.log(sortArr);
+  return sortFuncRecursive(arr, sortArr);
+}
+
+console.log(sortFuncRecursive(nums1));
+console.log(nums1);
 
 //Sample arrays for testing:
 //let nums1 = [5, 10, 2, 42];
